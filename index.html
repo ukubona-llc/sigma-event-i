@@ -297,8 +297,22 @@
     .cue-note .ext{grid-column:1 / -1; padding-top:0;}
   }
 
+  /* — rotating logo — */
+  @keyframes spin360{
+    from{transform:rotate(0deg);}
+    to  {transform:rotate(360deg);}
+  }
+  .logo-spin{
+    display:block;
+    width:52px; height:52px;
+    object-fit:contain;
+    margin:0 0 18px;
+    animation:spin360 120s linear infinite;
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;}
+    .logo-spin{animation:none !important;}
   }
 </style>
 </head>
@@ -310,6 +324,9 @@
 
   <!-- ================= MASTHEAD ================= -->
   <header class="masthead">
+    <img id="ukubona-logo" class="logo-spin"
+         src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+         alt="ukubona llc" />
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark theme">dark / light</button>
     <p class="eyebrow"><b>UGOAX</b> — ukubona · google · openai · anthropic · xai</p>
     <h1 class="title">The Stanford Walkout as a Pentadic Event</h1>
@@ -720,6 +737,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <script>
+  // theme toggle + logo swap
+  document.getElementById('theme-toggle').addEventListener('click', function(){
+    var root = document.documentElement;
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    var logo = document.getElementById('ukubona-logo');
+    logo.src = next === 'dark'
+      ? 'https://abikesa.github.io/logos/assets/ukubona-dark.png'
+      : 'https://abikesa.github.io/logos/assets/ukubona-light.png';
+  });
+
+  // video cueing
+  function cueTime(sec){
+    var frame = document.getElementById('yt-frame');
+    frame.src = 'https://www.youtube.com/embed/PzRJzqMYdis?start=' + sec + '&autoplay=1&rel=0';
+
+    document.querySelectorAll('.tick').forEach(function(el){
+      el.classList.toggle('is-active', Number(el.dataset.cue) === sec);
+    });
+    document.querySelectorAll('.cue-note').forEach(function(el){
+      el.classList.toggle('is-active', Number(el.dataset.cueNote) === sec);
+    });
+
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    document.getElementById('now-cued').innerHTML =
+      'cued — ' + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  // KaTeX
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: '\\[', right: '\\]', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });
+</script>
+</body>
+</html>
   // theme toggle
   document.getElementById('theme-toggle').addEventListener('click', function(){
     var root = document.documentElement;
