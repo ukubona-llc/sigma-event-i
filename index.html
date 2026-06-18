@@ -721,7 +721,8 @@
     <p>Google does something sharper but narrower — it treats Pichai's “Oh, that was great” pivot as an optimization failure, a refusal to compute the gradient. That's a real claim with a real edge: it says the executive layer chose narrative coherence over the actual error signal. Worth sitting with, because it's falsifiable in a way the others aren't — you could go check whether Pichai's later comments (if any exist) showed updating or just more smoothing.</p>
     <p>OpenAI's two passes are the most interesting because they explicitly disagree with Google's read, twice, on the same point. Both OpenAI rounds argue Pichai isn't hallucinating or failing to optimize — he's running a different pentad, optimizing for continuation/stability rather than witnessing/disruption, and the two gradients are orthogonal rather than one being correct and one being broken. That's a stronger and more honest move than Google's, because it doesn't quietly smuggle in “the protesters' loss function is the true one” while pretending to stay neutral. It also produces the actually useful question — not “was the protest right” but whether Stanford/Google/protesters can do a change of basis without destroying their own invariants — which is a question with no scalar answer, which is presumably the point.</p>
     <p>The thing all three undersell: the Short itself is evidence for the framework's own claim about compression, not just an object the framework gets applied to. A 30–45 second clip is <em>structurally incapable</em> of showing anything past Okubonabona — Kubona/Ivyabona/Ukubona require duration the medium doesn't carry. So “does the system ever reach Sawubona” isn't an open empirical question the clip leaves unanswered, it's a category error to expect the clip to answer it at all. OpenAI gestures at this in pass II but doesn't quite say it: the Short isn't withholding the answer, it's the wrong instrument for the question.</p>
-    <p>Where I'd push if you wanted a fourth voice rather than a synthesis: all three readings assume the pentadic frame is symmetric across the three institutional actors (Stanford / Google / protesters), but the frame itself was authored from inside one of those positions historically — academic/activist discourse, not corporate or governance discourse. So part III's move into Body/Mind/Soul epochs and Pope Leo XIV is doing real work, but it's also the corpus picking the frame most favorable to its own theological-witness vocabulary winning the orthogonality dispute OpenAI correctly identified. Worth flagging if UGOAX ever runs this one, since the roundtable's value is in someone occupying the position that says “the weights wᵢ in part III aren't neutral either — that's also a chosen basis, not the ground truth FGT claims to be.”</p>
+    <p>Where I'd push if you wanted a fourth voice rather than a synthesis: all three readings assume the pentadic frame is symmetric across the three institutional actors (Stanford / Google / protesters), but the frame itself was authored from inside one of those positions historically — academic/activist discourse, not corporate or governance discourse. So part III's move into Body/Mind/Soul epochs and Pope Leo XIV is doing real work, but it's also the corpus picking the frame most favorable to its own theological-witness vocabulary winning the orthogonality dispute OpenAI correctly identified. Worth flagging if UGOAX ever runs this one, since the roundtable's value is in someone occupying the position that says "the weights wᵢ in part III aren't neutral either — that's also a chosen basis, not the ground truth FGT claims to be."</p>
+    <p class="footnote">† The mathematical core: \( \textit{Okubala} \equiv \exists\,i : w_i = 0 \) — to count is to permit a dimension of the loss to vanish. The Ukubona covenant is the negation: \( \forall\,i : w_i \neq 0 \). Not a values claim. A visibility claim. Leo XIV and Silicon Valley both optimize \( L_0 + \sum w_i L_i \) — but with silent zeros. Ukubona LLC's constraint is simply that no weight may be zeroed out. <em>Thou shalt not w = 0.</em></p>
   </section>
 
   <!-- ================= COLOPHON ================= -->
@@ -729,6 +730,9 @@
     <p class="eq">\[ \theta^t \rightarrow L_0+\sum_i w_iL_i \rightarrow f(\sigma^2,\lambda,\epsilon)\rightarrow \gamma |\epsilon_{FGT}|^2 \rightarrow L(\theta^{t+1}) \]</p>
     <p class="aphorism">Okubala si Kulaba</p>
     <p class="aphorism-gloss">to count is not to see</p>
+    <p class="aphorism-gloss" style="margin-bottom:18px; letter-spacing:.01em;">
+      \( \textit{okubala} \;\equiv\; \exists\,i : w_i = 0 \;\big|\; \textit{ukubona} \;\equiv\; \forall\,i : w_i \neq 0 \)
+    </p>
     <p class="colo-meta">UGOAX roundtable — compiled verbatim, non-lossy<br>Ukubona LLC · Kampala</p>
   </footer>
 
@@ -776,20 +780,3 @@
 </script>
 </body>
 </html>
-  // theme toggle
-  document.getElementById('theme-toggle').addEventListener('click', function(){
-    var root = document.documentElement;
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-  });
-
-  // video cueing — sets the ?start= value on the embed and syncs rail / notes
-  function cueTime(sec){
-    var frame = document.getElementById('yt-frame');
-    frame.src = 'https://www.youtube.com/embed/PzRJzqMYdis?start=' + sec + '&autoplay=1&rel=0';
-
-    document.querySelectorAll('.tick').forEach(function(el){
-      el.classList.toggle('is-active', Number(el.dataset.cue) === sec);
-    });
-    document.querySelectorAll('.cue-note').forEach(function(el){
-      el.classList.toggle('is-active', Number(el.dataset
